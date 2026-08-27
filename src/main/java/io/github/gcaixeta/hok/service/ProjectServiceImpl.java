@@ -3,11 +3,13 @@ package io.github.gcaixeta.hok.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import io.github.gcaixeta.hok.exception.ProjectNotFoundException;
 import io.github.gcaixeta.hok.model.Project;
 import io.github.gcaixeta.hok.repository.ProjectRepository;
 
+@Service
 public class ProjectServiceImpl implements ProjectService {
 
   @Autowired
