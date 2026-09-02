@@ -19,6 +19,9 @@ public class Project {
   @Column(name = "symbol")
   private String symbol;
 
+  @Column(name = "description")
+  private String description;
+
   public String getName() {
     return name;
   }
@@ -29,6 +32,22 @@ public class Project {
 
   public String getSymbol() {
     return symbol;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public void setSymbol(String symbol) {
