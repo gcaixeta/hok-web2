@@ -23,9 +23,10 @@ public class ProjectController {
 
   @PostMapping("project/save")
   public String save(Project project, Model model) {
+    System.out.println(project.getName());
     projectService.saveProject(project);
     model.addAttribute("projectList", projectService.getAllProjects());
-    return "project/index";
+    return "redirect:/project";
   }
 
   @GetMapping("project")
