@@ -21,12 +21,16 @@
           <tr>
             <th scope="col">Nome</th>
             <th scope="col">Sigla</th>
+            <th scope="col">Excluir</th>
           </tr>
         </thead>
         <tbody>
           <tr th:each="project : ${projectList}">
             <td scope="row" th:text="${project.name}"></td>
             <td scope="row" th:text="${project.symbol}"></td>
+            <td>
+              <a th:href="@{/project/delete/{id}(id=${project.id})}">Deletar</a>
+            </td>
           </tr>
         </tbody>
       </table>
