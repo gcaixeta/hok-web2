@@ -11,9 +11,10 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
   </head>
   <body>
-    <div class="container">
+    <div class="container top-padding">
       <a th:href="@{/project/create}">Cadastrar projeto</a>
       <h1>Listagem de Projetos</h1>
       <table class="table table-striped">
@@ -22,6 +23,7 @@
             <th scope="col">Nome</th>
             <th scope="col">Sigla</th>
             <th scope="col">Excluir</th>
+            <th scope="col">Editar</th>
           </tr>
         </thead>
         <tbody>
@@ -30,6 +32,9 @@
             <td scope="row" th:text="${project.symbol}"></td>
             <td>
               <a th:href="@{/project/delete/{id}(id=${project.id})}">Deletar</a>
+            </td>
+            <td>
+              <a th:href="@{/project/edit/{id}(id=${project.id})}">Editar</a>
             </td>
           </tr>
         </tbody>

@@ -22,6 +22,14 @@ public class ProjectController {
     return "project/create";
   }
 
+  @GetMapping("project/edit/{id}")
+  public String edit(@PathVariable Long id, Model model) {
+    System.out.println("Requesting page: editing project: " + id);
+    Project projectToEdit = projectService.getProjectById(id);
+    model.addAttribute("project", projectToEdit);
+    return "project/edit";
+  }
+
   @PostMapping("project/save")
   public String save(Project project, Model model) {
     System.out.println(project.getName());
