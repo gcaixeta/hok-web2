@@ -1,6 +1,8 @@
 package io.github.gcaixeta.hok.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 /**
  * Project
@@ -14,9 +16,11 @@ public class Project {
   private Long id;
 
   @Column(name = "name", nullable = false)
+  @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
   private String name;
 
   @Column(name = "symbol")
+  @NotBlank
   private String symbol;
 
   @Column(name = "description")

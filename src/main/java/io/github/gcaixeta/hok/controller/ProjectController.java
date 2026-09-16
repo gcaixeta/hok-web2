@@ -3,12 +3,14 @@ package io.github.gcaixeta.hok.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import io.github.gcaixeta.hok.model.Project;
 import io.github.gcaixeta.hok.service.ProjectService;
+import jakarta.validation.Valid;
 
 @Controller
 public class ProjectController {
@@ -31,8 +33,14 @@ public class ProjectController {
   }
 
   @PostMapping("project/save")
-  public String save(Project project, Model model) {
+  public String save(@Valid Project project, Model model, BindingResult result) {
     System.out.println(project.getName());
+
+    if (result.hasErrors()) {
+      model.addAttribute("project", project);
+      return "project/create";
+    }
+
     projectService.saveProject(project);
     model.addAttribute("projectList", projectService.getAllProjects());
     return "redirect:/project";
