@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
   <th:block th:replace="~{/../fragments/head :: head('Listagem de Projetos')}"></th:block>
   <body>
@@ -30,6 +30,11 @@
           </tr>
         </tbody>
       </table>
+      <div class="row">
+        <a th:href="@{/project/create}">
+          <button sec:authorize="hasAuthority('Admin')" class="btn btn-primary">Cadastrar Projeto</button>
+        </a>
+      </div>
     </div>
   </body>
 </html>

@@ -3,15 +3,14 @@ package io.github.gcaixeta.hok.controller;
 import io.github.gcaixeta.hok.model.User;
 import io.github.gcaixeta.hok.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
 
-@RestController
-@RequestMapping("/user")
+@Controller
 public class UserController {
 
     @Autowired
@@ -22,7 +21,7 @@ public class UserController {
         return "user/registerUser";
     }
 
-    @GetMapping("/saveUser")
+    @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute User user, Model model) {
         Integer userId = userService.saveUser(user);
         String message = "User saved sucessfully: " + userId;

@@ -1,7 +1,7 @@
 <nav
         th:fragment="header()"
         class="container-fluid navbar navbar-expand-lg navbar-dark bg-dark"
->
+        xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="container">
         <button
                 class="navbar-toggler"
@@ -31,10 +31,14 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" th:href="@{/project}" >Listar</a>
-                        <a class="dropdown-item" th:href="@{/project/create}">Cadastrar</a>
+                        <a sec:authorize="hasAuthority('Admin')" class="dropdown-item" th:href="@{/project/create}">Cadastrar</a>
                     </div>
                 </li>
             </ul>
+            <form class="form-inline my-2 my-lg-0" action="/logout" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit" class="btn btn-block d-lg-inline-block my-2 my-sm-0">Sair</button>
+            </form>
         </div>
     </div>
 </nav>

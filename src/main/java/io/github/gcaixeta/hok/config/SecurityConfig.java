@@ -28,10 +28,12 @@ public class SecurityConfig {
         http.authorizeHttpRequests(requests ->
                 requests.requestMatchers("/home", "/register", "/saveUser")
                         .permitAll()
+                        .requestMatchers("/project/*")
+                        .authenticated()
                         .anyRequest().authenticated())
-                .formLogin(login -> login.defaultSuccessUrl("/project", true))
+                .formLogin(login -> login.defaultSuccessUrl("/", true))
                 .logout(logout -> logout.logoutUrl("/logout"))
-                .exceptionHandling(handling -> handling.accessDeniedPage("accessDenied"))
+                .exceptionHandling(handling -> handling.accessDeniedPage("/accessDenied"))
                 .authenticationProvider(authenticationProvider());
 
         return http.build();
