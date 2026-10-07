@@ -25,7 +25,7 @@
               name="name"
               placeholder="Digite o nome do projeto que está trabalhando"
             />
-            <p th:if="${#fields.hasErrors('name')}" th:errorclass="text-danger" th:errors="{*name}"></p>
+            <p th:if="${#fields.hasErrors('name')}" th:errorclass="text-danger" th:errors="*{name}"></p>
           </div>
         </div>
 
@@ -40,7 +40,7 @@
               name="symbol"
               placeholder="Digite a sigla do projeto"
             />
-            <p th:if="${#fields.hasErrors('symbol')}" th:errorclass="text-danger" th:errors="{*symbol}"></p>
+            <p th:if="${#fields.hasErrors('symbol')}" th:errorclass="text-danger" th:errors="*{symbol}"></p>
           </div>
         </div>
 

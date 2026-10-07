@@ -1,7 +1,6 @@
 package io.github.gcaixeta.hok.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,7 +33,7 @@ public class ProjectController {
   }
 
   @PostMapping("project/save")
-  public String save(@Valid Project project, Model model, BindingResult result) {
+  public String save(@Valid Project project, BindingResult result, Model model) {
     System.out.println(project.getName());
 
     if (result.hasErrors()) {
